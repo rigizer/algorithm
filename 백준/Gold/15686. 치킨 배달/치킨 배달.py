@@ -1,32 +1,19 @@
 from itertools import combinations
 import sys
 
-def init_chickens(n, board):
-    chickens = []
-    
-    for i in range(n):
-        for j in range(n):
-            if board[i][j] == 2:
-                chickens.append((i, j))
-    
-    return chickens
-
-def get_chicken_distance(n, board, chickens):
+def get_chicken_distance(n, board, chickens, homes):
     distance = 0
 
     # 도시 탐색
-    for i in range(n):
-        for j in range(n):
-            # 집이 있는 경우
-            if board[i][j] == 1:
-                min_chicken_distance = sys.maxsize
-                
-                for chicken in chickens:
-                    # 치킨집(i, j)과 집(chicken[0], chicken[1]) 사이의 거리 계산
-                    chicken_distance = abs(i - chicken[0]) + abs(j - chicken[1])
-                    min_chicken_distance = min(min_chicken_distance, chicken_distance)
-                
-                distance += min_chicken_distance
+    for i, j in homes:
+        min_chicken_distance = sys.maxsize
+        
+        for chicken in chickens:
+            # 치킨집(chicken[0], chicken[1])과 집(i, j) 사이의 거리 계산
+            chicken_distance = abs(i - chicken[0]) + abs(j - chicken[1])
+            min_chicken_distance = min(min_chicken_distance, chicken_distance)
+        
+        distance += min_chicken_distance
 
     return distance
 
@@ -39,8 +26,15 @@ n, m = map(int, input().split())
 # 2 : 치킨집
 board = [list(map(int, input().split())) for _ in range(n)]
 
-# 치킨집의 위치
-chickens = init_chickens(n, board)
+homes = []    # 집의 위치
+chickens = [] # 치킨집의 위치
+
+for i in range(n):
+    for j in range(n):
+        if board[i][j] == 1:
+            homes.append((i, j))
+        elif board[i][j] == 2:
+            chickens.append((i, j))
 
 # 최소 치킨 거리
 min_distance = sys.maxsize
@@ -51,7 +45,7 @@ min_distance = sys.maxsize
 for chicken in combinations(chickens, m):
     # chicken : M개씩 짝지은 치킨집들의 목록
     # M개의 치킨집을 선택한 경우의 치킨 거리 계산
-    distance = get_chicken_distance(n, board, chicken)
+    distance = get_chicken_distance(n, board, chicken, homes)
     # 치킨 거리의 최소값 갱신
     min_distance = min(min_distance, distance)
 
