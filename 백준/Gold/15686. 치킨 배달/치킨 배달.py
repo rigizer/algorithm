@@ -1,15 +1,14 @@
 from itertools import combinations
 import sys
 
-def get_chicken_distance(n, board, chickens, homes):
+def get_chicken_distance(chickens, homes):
     distance = 0
 
-    # 도시 탐색
     for i, j in homes:
         min_chicken_distance = sys.maxsize
         
         for chicken in chickens:
-            # 치킨집(chicken[0], chicken[1])과 집(i, j) 사이의 거리 계산
+            # 집(i, j)과 치킨집(chicken[0], chicken[1]) 사이의 거리 계산
             chicken_distance = abs(i - chicken[0]) + abs(j - chicken[1])
             min_chicken_distance = min(min_chicken_distance, chicken_distance)
         
@@ -45,7 +44,7 @@ min_distance = sys.maxsize
 for chicken in combinations(chickens, m):
     # chicken : M개씩 짝지은 치킨집들의 목록
     # M개의 치킨집을 선택한 경우의 치킨 거리 계산
-    distance = get_chicken_distance(n, board, chicken, homes)
+    distance = get_chicken_distance(chicken, homes)
     # 치킨 거리의 최소값 갱신
     min_distance = min(min_distance, distance)
 
