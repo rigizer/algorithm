@@ -1,6 +1,2 @@
-N = int(input())
-n = str(input())
-sum = 0
-for i in range(N):
-    sum = sum + int(n[i])
-print(sum)
+n = int(input())
+print(sum([int(i) for i in list(input())]))
