@@ -1,0 +1,1 @@
+print(sum(list(int(i) for i in input())))
