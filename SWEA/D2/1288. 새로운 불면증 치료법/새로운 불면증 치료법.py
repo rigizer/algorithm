@@ -1,23 +1,42 @@
-for t in range(1, int(input()) + 1):
-    n = int(input())
-    i = 1
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
 
-    number = {
-                0: False, 1: False, 2: False, 3: False, 4: False, 
-                5: False, 6: False, 7: False, 8: False, 9: False
+public class Solution {
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st;
+
+        int t = Integer.parseInt(br.readLine());
+        for (int tc = 1; tc <= t; tc++) {
+            int n = Integer.parseInt(br.readLine());
+            boolean[] nums = new boolean[10];
+
+            int m = 1;
+            while (true) {
+                int q = n * m;
+                while (q > 0) {
+                    int r = q % 10;
+                    q /= 10;
+
+                    nums[r] = true;
+                }
+
+                boolean check = true;
+                for (int i = 0; i < 10; i++) {
+                    if (nums[i] == false) {
+                        check = false;
+                        break;
+                    }
+                }
+
+                if (check == true) {
+                    System.out.println("#" + tc + " " + (n * m));
+                    break;
+                }
+
+                m += 1;
             }
-
-    while True:
-        num = n * i
-
-        temp = list(str(num))
-        for a in temp:
-            number[int(a)] = True
-
-        if False in number.values():
-            i += 1
-            continue
-
-        break
-
-    print('#{} {}'.format(t, n * i))
+        }
+    }
+}
