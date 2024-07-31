@@ -83,10 +83,10 @@ public class Main {
             bfs();
             return;
         }
-        for (int i = start; i < virus.size(); i++) {
+        for (int i = start; i < C; i++) {
             if (!selected[i]) {
                 selected[i] = true;
-                combination(start + 1, end - 1);
+                combination(i + 1, end - 1);
                 selected[i] = false;
             }
         }
