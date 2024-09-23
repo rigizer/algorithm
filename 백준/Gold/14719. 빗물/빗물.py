@@ -4,7 +4,6 @@ def calc(h, w, block):
     for i in range(1, h + 1):
         chk = 0
         start = False
-        end = False
 
         for j in range(w):
             if start == False:
@@ -17,11 +16,9 @@ def calc(h, w, block):
                     if chk == 0:
                         continue
 
-                    end = True
                     result += chk
                     chk = 0
                     start = True
-                    end = False
 
     return result
 
