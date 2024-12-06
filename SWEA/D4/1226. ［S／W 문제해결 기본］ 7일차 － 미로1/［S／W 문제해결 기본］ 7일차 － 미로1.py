@@ -1,43 +1,45 @@
 from collections import deque
 
+SIZE = 16
+TEST_CASE = 10
+
 dy = [-1, 0, 1, 0]
 dx = [0, 1, 0, -1]
 
-def find(board, queue, visited, n):
-    for i in range(16):
-        for j in range(16):
-            if board[i][j] == n:
-                return i, j
+def init(board, queue, visited):
+    for i in range(SIZE):
+        for j in range(SIZE):
+            if board[i][j] == 2:
+                queue.append((i, j))
+                visited[i][j] = True
+                return
 
 def bfs(board):
     queue = deque()
-    visited = [[False] * 16 for _ in range(16)]
+    visited = [[False] * SIZE for _ in range(SIZE)]
 
-    sy, sx = find(board, queue, visited, 2)
-    ey, ex = find(board, queue, visited, 3)
-
-    queue.append((sy, sx))
-    visited[sy][sx] = True
+    init(board, queue, visited)
 
     while queue:
-        ny, nx = queue.popleft()
-
-        if (ny, nx) == (ey, ex):
-            return 1
+        y, x = queue.popleft()
 
         for d in range(4):
-            y = ny + dy[d]
-            x = nx + dx[d]
+            ny = y + dy[d]
+            nx = x + dx[d]
 
-            if 0 <= y < 16 and 0 <= x < 16 and board[y][x] != 1 and visited[y][x] == False:
-                queue.append((y, x))
-                visited[y][x] = True
+            if 0 <= ny < SIZE and 0 <= nx < SIZE:
+                if board[ny][nx] != 1 and visited[ny][nx] == False:
+                    queue.append((ny, nx))
+                    visited[ny][nx] = True
 
+                    if board[ny][nx] == 3:
+                        return 1
+    
     return 0
 
-for _ in range(10):
-    t = int(input())
-    board = [list(int(i) for i in input()) for _ in range(16)]
+for _ in range(TEST_CASE):
+    case_num = int(input())
+    board = [list(map(int, input())) for _ in range(SIZE)]
 
     result = bfs(board)
-    print('#{} {}'.format(t, result))
+    print(f'#{case_num} {result}')
