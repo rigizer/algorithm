@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 108384 KB, 시간: 92 ms
+메모리: 18304 KB, 시간: 180 ms
 
 ### 분류
 
@@ -12,13 +12,13 @@
 
 ### 제출 일자
 
-2025년 2월 24일 20:43:39
+2025년 2월 24일 21:09:24
 
 ### 문제 설명
 
 <p>A common error in programming is to use variables that have not been initialized before. For example, in C and C++, all variables have an indefinite value after declaration – their value can be anything. Thus, the following program</p>
 
-<div><div id="highlighter_290818" class="syntaxhighlighter  c"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="c plain">main()</code></div><div class="line number2 index1 alt1"><code class="c plain">{</code></div><div class="line number3 index2 alt2"><code class="c spaces">    </code><code class="c color1 bold">int</code> <code class="c plain">x;</code></div><div class="line number4 index3 alt1"><code class="c spaces">    </code><code class="c functions bold">printf</code><code class="c plain">(</code><code class="c string">"%d\n"</code><code class="c plain">,x);</code></div><div class="line number5 index4 alt2"><code class="c plain">}</code></div></div></td></tr></tbody></table></div></div>
+<div><div id="highlighter_614514" class="syntaxhighlighter  c"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="c plain">main()</code></div><div class="line number2 index1 alt1"><code class="c plain">{</code></div><div class="line number3 index2 alt2"><code class="c spaces">    </code><code class="c color1 bold">int</code> <code class="c plain">x;</code></div><div class="line number4 index3 alt1"><code class="c spaces">    </code><code class="c functions bold">printf</code><code class="c plain">(</code><code class="c string">"%d\n"</code><code class="c plain">,x);</code></div><div class="line number5 index4 alt2"><code class="c plain">}</code></div></div></td></tr></tbody></table></div></div>
 
 <p>could print any number. But even in languages such as Pascal, where all values are initialized to zero, it is useful to give variables definite values before using them, to avoid side effects when your code portion is placed into a different context.</p>
 
