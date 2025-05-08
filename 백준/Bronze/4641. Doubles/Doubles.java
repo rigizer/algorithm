@@ -1,33 +1,37 @@
 import java.io.*;
-import java.util.*;
 
 public class Main {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st;
+        StringBuilder sb = new StringBuilder();
 
         while (true) {
-            st = new StringTokenizer(br.readLine());
-            List<Integer> list = new ArrayList<>();
-            Set<Integer> set = new HashSet<>();
+            String line = br.readLine();
+            if (line.equals("-1")) break;
 
-            while (st.hasMoreTokens()) {
-                int n = Integer.parseInt(st.nextToken());
+            String[] tokens = line.split(" ");
+            boolean[] exists = new boolean[101];
+            int[] nums = new int[tokens.length];
+            int size = 0;
+
+            for (String token : tokens) {
+                int n = Integer.parseInt(token);
                 if (n == 0) break;
-                list.add(n);
-                set.add(n);
+                nums[size++] = n;
+                exists[n] = true;
             }
 
-            if (list.size() == 1 && list.get(0) == -1) break;
-
             int result = 0;
-            for (int num : list) {
-                if (set.contains(num * 2)) {
+            for (int i = 0; i < size; i++) {
+                int doubleVal = nums[i] * 2;
+                if (doubleVal <= 100 && exists[doubleVal]) {
                     result++;
                 }
             }
 
-            System.out.println(result);
+            sb.append(result).append("\n");
         }
+
+        System.out.print(sb);
     }
 }
