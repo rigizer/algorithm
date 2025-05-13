@@ -21,12 +21,10 @@ public class Solution {
                 boolean tmp = m[i] ^ status;
                 if (tmp) {
                     status = !status;
+                    result++;
                 }
-                result += tmp ? 1 : 0;
             }
-
-            sb.append("#").append(t).append(" ").append(result).append("\n");
-            
+            sb.append('#').append(t).append(' ').append(result).append('\n');
         }
         System.out.println(sb);
     }
