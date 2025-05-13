@@ -24,7 +24,9 @@ public class Solution {
                     result++;
                 }
             }
-            sb.append('#').append(t).append(' ').append(result).append('\n');
+
+            sb.append("#").append(t).append(" ").append(result).append("\n");
+            
         }
         System.out.println(sb);
     }
