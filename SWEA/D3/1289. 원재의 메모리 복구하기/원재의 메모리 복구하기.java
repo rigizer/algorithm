@@ -4,6 +4,7 @@ public class Solution {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        StringBuffer sb = new StringBuffer();
         
         int tc = Integer.parseInt(br.readLine());
         for (int t = 1; t <= tc; t++) {
@@ -25,8 +26,10 @@ public class Solution {
                 result += tmp ? 1 : 0;
             }
 
-            bw.append("#" + t + " " + result + "\n");
-            bw.flush();
+            sb.append("#").append(t).append(" ").append(result).append("\n");
+            
         }
+        bw.append(sb.toString());
+        bw.flush();
     }
 }
