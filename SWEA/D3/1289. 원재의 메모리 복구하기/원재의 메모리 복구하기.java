@@ -9,24 +9,15 @@ public class Solution {
         for (int t = 1; t <= tc; t++) {
             String input = br.readLine();
             int s = input.length();
-            boolean[] m = new boolean[s];
-            for (int i = 0; i < s; i++) {
-                m[i] = input.charAt(i) == '1';
-            }
-
             boolean status = false;
             int result = 0;
-
             for (int i = 0; i < s; i++) {
-                boolean tmp = m[i] ^ status;
-                if (tmp) {
+                if ((input.charAt(i) == '1') != status) {
                     status = !status;
                     result++;
                 }
             }
-
-            sb.append("#").append(t).append(" ").append(result).append("\n");
-            
+            sb.append('#').append(t).append(' ').append(result).append('\n');
         }
         System.out.println(sb);
     }
