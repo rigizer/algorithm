@@ -3,7 +3,6 @@ import java.io.*;
 public class Solution {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
         StringBuffer sb = new StringBuffer();
         
         int tc = Integer.parseInt(br.readLine());
@@ -29,7 +28,6 @@ public class Solution {
             sb.append("#").append(t).append(" ").append(result).append("\n");
             
         }
-        bw.append(sb.toString());
-        bw.flush();
+        System.out.println(sb);
     }
 }
