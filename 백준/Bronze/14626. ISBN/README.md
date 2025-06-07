@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 108384 KB, 시간: 88 ms
+메모리: 11460 KB, 시간: 64 ms
 
 ### 분류
 
@@ -12,11 +12,11 @@
 
 ### 제출 일자
 
-2025년 6월 7일 14:57:52
+2025년 6월 7일 15:11:38
 
 ### 문제 설명
 
-<p style="text-align:center"><img alt="" src="" style="height:140px; width:230px"></p>
+<p style="text-align:center"><img alt="" src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/problem/14626/1.png" style="height:140px; width:230px"></p>
 
 <p>ISBN(International Standard Book Number)은 전 세계 모든 도서에 부여된 고유번호로, 국제 표준 도서번호이다. ISBN에는 국가명, 발행자 등의 정보가 담겨 있으며 13자리의 숫자로 표시된다. 그중 마지막 숫자는 체크기호로 ISBN의 정확성 여부를 점검할 수 있는 숫자이다. 이 체크기호는 일련번호의 앞에서부터 각 자리마다 가중치 1, 3, 1, 3…. 를 곱한 것을 모두 더하고, 그 값을 10으로 나눈 나머지가 0이 되도록 만드는 숫자 m을 사용한다. 수학적으로는 다음과 같다.</p>
 
