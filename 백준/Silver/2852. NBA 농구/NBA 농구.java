@@ -37,8 +37,9 @@ public class Main {
     }
 
     private static int stringToTime(String time) {
-        String[] t = time.split(":");
-        return Integer.parseInt(t[0]) * 60 + Integer.parseInt(t[1]);
+        int min = Integer.parseInt(time.substring(0, 2));
+        int sec = Integer.parseInt(time.substring(3, 5));
+        return min * 60 + sec;
     }
 
     private static String timeToString(int time) {
