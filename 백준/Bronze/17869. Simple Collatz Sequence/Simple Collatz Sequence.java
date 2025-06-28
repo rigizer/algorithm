@@ -6,12 +6,10 @@ public class Main {
         Long n = Long.parseLong(br.readLine());
         int result = 0;
 
-        while (true) {
-            if (n == 1) break;
-            result++;
-
+        while (n > 1) {
             if (n % 2 == 0) n /= 2;
             else n++;
+            result++;
         }
 
         System.out.println(result);
