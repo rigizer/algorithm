@@ -1,36 +1,19 @@
 def calc(n):
-    s = 0
-    q = n
-    while True:
-        r = q % 10
-        q //= 10
-        s += r
-    
-        if q == 0:
-            break
-
+    str_n = str(n)
+    s = sum(int(i) for i in str_n)
     s = 9 - (s % 9)
     if s == 9:
         s = 0
 
-    result = []
+    result = set()
+    for i in range(len(str_n) + 1):
+        if s == 0 and i == 0:
+            continue
+        x = str_n[:i]
+        y = str_n[i:]
 
-    o = 0
-    while True:
-        r = n % (10 ** o)
-        q = n // (10 ** o)
-
-        a = (q * (10 ** (o + 1))) + (s * (10 ** o)) + r
-        if a % 9 == 0:
-            if not (q == 0 and s == 0):
-                result.append(a)
-
-        if q == 0:
-            break
-        
-        o += 1
-    
-    return min(result)
+        if i == len(str_n) or s < int(str_n[i]):
+            return int(x + str(s) + y)
 
 for tc in range(int(input())):
     n = int(input())
