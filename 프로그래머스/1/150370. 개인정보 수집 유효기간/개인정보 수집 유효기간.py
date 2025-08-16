@@ -15,7 +15,7 @@ def solution(today, terms, privacies):
     for i, privacy in enumerate(privacies):
         key, val = map(str, privacy.split())
         p_val = parse_date(key) + terms_val.get(val)
-        print(today_val, p_val, today, key, p_val < today_val)
+        print(p_val, today_val)
         
         if p_val <= today_val:
             answer.append(i + 1)
