@@ -28,5 +28,4 @@ for i in result:
     if x <= n:
         answer.append(x)
 
-answer.sort()
 print(len(answer))
