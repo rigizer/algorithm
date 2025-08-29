@@ -1,22 +1,19 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-result = []
 n = int(input())
 t = list(map(int, input().split()))
 t.sort()
 
-index = (n - 1) // 2
-m = n - index
-if n % 2 == 0:
-    m -= 1
-result.append(t[index])
+mid = (n - 1) // 2
+res = [t[mid]]
 
-for i in range(1, m):
-    result.append(t[index + i])
-    result.append(t[index - i])
-    
-if n % 2 == 0:
-    result.append(t[n - 1])
+for i in range(1, mid + 1):
+    if mid + i < n:
+        res.append(t[mid + i])
+    res.append(t[mid - i])
 
-print(' '.join(map(str, result)))
+if n % 2 == 0:
+    res.append(t[-1])
+
+print(' '.join(map(str, res)))
