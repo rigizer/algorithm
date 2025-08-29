@@ -1,3 +1,6 @@
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
 candidate = [0] * 3
 squared = [0] * 3
 for _ in range(int(input())):
