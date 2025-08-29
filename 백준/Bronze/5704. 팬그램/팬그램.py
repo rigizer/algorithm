@@ -1,3 +1,7 @@
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
+result = []
 while True:
     words = input()
     if words == '*':
@@ -9,4 +13,6 @@ while True:
             continue
         alphabet[ord(i) - 97] = True
 
-    print('N' if False in alphabet else 'Y')
+    result.append('N' if False in alphabet else 'Y')
+
+print('\n'.join(result))
