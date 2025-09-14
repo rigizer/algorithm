@@ -1,50 +1,19 @@
 import sys
 input = lambda: sys.stdin.readline().rstrip()
 
-def check_line(table):
-    for i in range(9):
-        check = [False] * 10
-        for j in range(9):
-            if check[table[i][j]] == True:
-                return False
-            check[table[i][j]] = True
-    
-    return True
-
-def check_group(table):
-    for i in range(3):
-        for j in range(3):
-            check = [False] * 10
-            for k in range(3):
-                for l in range(3):
-                    if check[table[i * 3 + k][j * 3 + l]] == True:
-                        return False
-                    check[table[i * 3 + k][j * 3 + l]] = True
-    
-    return True
+is_valid_sudoku = lambda t: all(
+    len(set(t[i])) == 9 and
+    len(set(t[j][i] for j in range(9))) == 9 and
+    len({t[3*(i//3)+k][3*(i%3)+l] for k in range(3) for l in range(3)}) == 9
+    for i in range(9)
+)
 
 n = int(input())
-result = []
-for i in range(n):
+results = []
+for case in range(1, n + 1):
     table = [list(map(int, input().split())) for _ in range(9)]
-    if i < n - 1:
+    if case < n:
         input()
-    
-    garo = check_line(table)
-    if not garo:
-        result.append(f"Case {i + 1}: INCORRECT")
-        continue
-    
-    sero = check_line(list(zip(*table)))
-    if not sero:
-        result.append(f"Case {i + 1}: INCORRECT")
-        continue
-    
-    group = check_group(table)
-    if not group:
-        result.append(f"Case {i + 1}: INCORRECT")
-        continue
-    
-    result.append(f"Case {i + 1}: CORRECT")
-    
-print('\n'.join(result))
+    results.append(f"Case {case}: {'CORRECT' if is_valid_sudoku(table) else 'INCORRECT'}")
+
+print('\n'.join(results))
