@@ -1,33 +1,27 @@
 import sys
-from collections import deque
 input = lambda: sys.stdin.readline().rstrip()
 
 n, m = map(int, input().split())
-graph = [[] for _ in range(n + 1)]
-visited = [False] * (n + 1)
+parent = list(range(n + 1))
+size = [1] * (n + 1)
+
+def find(x):
+    while parent[x] != x:
+        parent[x] = parent[parent[x]]
+        x = parent[x]
+    return x
+
+def union(a, b):
+    ra, rb = find(a), find(b)
+    if ra != rb:
+        if size[ra] < size[rb]:
+            ra, rb = rb, ra
+        parent[rb] = ra
+        size[ra] += size[rb]
 
 for _ in range(m):
     a, b = map(int, input().split())
-    graph[a].append(b)
-    graph[b].append(a)
+    union(a, b)
 
-def bfs(start):
-    queue = deque([start])
-    visited[start] = True
-    count = 1
-
-    while queue:
-        node = queue.popleft()
-        for x in graph[node]:
-            if not visited[x]:
-                queue.append(x)
-                visited[x] = True
-                count += 1
-                
-    return count
-
-result = 0
-for i in range(1, n + 1):
-    if visited[i] == False:
-        result = max(result, bfs(i))
+result = max(size[1:])
 print(result)
