@@ -39,20 +39,15 @@ def bfs(n, m, k, board):
             x = node.x + dx[d]
 
             if 0 <= y < n and 0 <= x < m:
-                if node.d == True:    # 낮일때
-                    # 벽 뚫고 이동하는 경우
+                if node.d == True:    
+                    # 낮일때 벽 뚫고 이동하는 경우
                     if node.w < k and visited[node.w + 1][y][x] > node.t + 1 and board[y][x] == 1:
                         queue.append(Node(y, x, node.t + 1, False, node.w + 1))
                         visited[node.w + 1][y][x] = node.t + 1
 
-                    # 벽 뚫지 않고 이동하는 경우
-                    elif visited[node.w][y][x] > node.t + 1 and board[y][x] == 0:
-                        queue.append(Node(y, x, node.t + 1, False, node.w))
-                        visited[node.w][y][x] = node.t + 1
-
-                elif node.d == False: # 밤일때 벽 뚫지 않고 이동하는 경우
-                    if visited[node.w][y][x] > node.t + 1 and board[y][x] == 0:
-                        queue.append(Node(y, x, node.t + 1, True, node.w))
+                # 낮/밤일때 벽 뚫지 않고 이동하는 경우
+                if visited[node.w][y][x] > node.t + 1 and board[y][x] == 0:
+                        queue.append(Node(y, x, node.t + 1, not node.d, node.w))
                         visited[node.w][y][x] = node.t + 1
 
     return -1 if result == 1e9 else result
