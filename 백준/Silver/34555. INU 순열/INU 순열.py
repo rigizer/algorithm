@@ -2,17 +2,14 @@ import sys
 input = lambda: sys.stdin.readline().rstrip()
 
 n = int(input())
-an = []
-bn = []
-
+result = []
 x = n // 2 + 1
-for i in range(x, n + 1):
-    an.append(i)
-for i in range(x - 1, 0, -1):
-    bn.append(i)
 
 for i in range(n // 2):
-    print(an[i], bn[i], end=' ')
+    result.append(str(x + i))
+    result.append(str(x - 1 - i))
 
 if n % 2 == 1:
-    print(n)
+    result.append(str(n))
+
+print(' '.join(result), end='')
