@@ -9,9 +9,7 @@ board = [['#'] * (n + l + r) for _ in range(m + u + d)]
 
 for i in range(m + u + d):
     for j in range(n + l + r):
-        if i % 2 == 0 and j % 2 == 1:
-            board[i][j] = '.'
-        elif i % 2 == 1 and j % 2 == 0:
+        if (i + j) % 2 == 1:
             board[i][j] = '.'
 
 for i in range(m):
