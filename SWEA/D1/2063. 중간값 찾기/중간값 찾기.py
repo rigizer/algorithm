@@ -1,3 +1,4 @@
 n = int(input())
-data = sorted(list(map(int, input().split())))
+data = list(map(int, input().split()))
+data.sort()
 print(data[n // 2])
