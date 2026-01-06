@@ -5,7 +5,7 @@ input = lambda: os.sys.stdin.readline().rstrip()
 n, p = map(int, input().split())
 note = [list(map(int, input().split())) for _ in range(n)]
 
-frets = [deque([0]) for _ in range(p + 1)]
+frets = [[0] for _ in range(p + 1)]
 max_fret = [0] * (p + 1)
 
 result = 0
