@@ -1,3 +1,6 @@
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
 n, m = map(int, input().split())
 data = sorted(list(map(int, input().split())))
 result = []
