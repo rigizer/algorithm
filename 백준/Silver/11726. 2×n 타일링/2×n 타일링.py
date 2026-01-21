@@ -1,7 +1,10 @@
+import sys
+input = lambda: sys.stdin.readline().rstrip()
+
 n = int(input())
-cache = [0] * 1001
-cache[1] = 1
-cache[2] = 2
-for i in range(3, 1001):
-    cache[i] = (cache[i - 1] + cache[i - 2]) % 10007
-print(cache[n])
+dp = [0] * (n + 2)
+dp[1] = 1
+dp[2] = 2
+for i in range(3, n + 1):
+    dp[i] = (dp[i - 1] + dp[i - 2]) % 10007
+print(dp[n])
