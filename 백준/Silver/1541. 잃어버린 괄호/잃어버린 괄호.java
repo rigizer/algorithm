@@ -4,14 +4,22 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringTokenizer st = new StringTokenizer(br.readLine(), "-");
 
-        String[] exp = br.readLine().split("\\-");
+        List<String> exp = new ArrayList<>();
+        while (st.hasMoreTokens()) {
+            exp.add(st.nextToken());
+        }
         int result = 0;
         
         List<Integer> num = new ArrayList<>();
         for (String i: exp) {
             int sum = 0;
-            String[] subExp = i.split("\\+");
+            st = new StringTokenizer(i, "+");
+            List<String> subExp = new ArrayList<>();
+            while (st.hasMoreTokens()) {
+                subExp.add(st.nextToken());
+            }
             for (String j: subExp) {
                 sum += Integer.parseInt(j);
             }
